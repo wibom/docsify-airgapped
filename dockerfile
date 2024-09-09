@@ -12,8 +12,8 @@ RUN npm install -g docsify-cli@latest && \
 
 # https://stackoverflow.com/a/62847426/7439717
 RUN apk --update add curl && \
-    apk add --no-cache wget
-
+    apk add --no-cache wget jq
+    
 # Bundle offline stuff with the image 
 ADD customize.sh /tmp/custom_scripts/
 RUN sh /tmp/custom_scripts/customize.sh   

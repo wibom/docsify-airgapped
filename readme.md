@@ -45,13 +45,19 @@ With a little ChatGPT help:
 
 ## Make off-line using the script `customize.sh`
 
-- Prettify all previous work by
-	- Writing up the commands used in a script: `customize.sh`
-	- Modify dockerfile to ADD the script and RUN it at build time 
-		- This adds all external assets to `/tmp/static/` within the container
-	- Modify the run-script to copy `tmp/static` to `/docs/.docsify` 
+- Prettify all previous work by:
+	- Writing up the commands used in a script: `customize.sh`.
+	- Modify dockerfile to ADD the script and RUN it at build time. 
+		- This adds all external assets to `/tmp/static/` within the container.
+	- Modify the run-script to copy `tmp/static` to `/docs/.docsify`.
 		- We have not solved the UID/GID-mapping; the `.docsify`-directory volume mapped under `/docs` is owned by root on the host...
 
 > As the next step: try and add emojis, like we did last time :)
 > 
   
+# Todo
+[ ] add syntax-hightligh for all languages. 
+	- See previous attempt.
+- Is there a mermaid-plugin we can add?
+
+
