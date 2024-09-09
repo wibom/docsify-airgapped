@@ -11,7 +11,7 @@ This is the description of a tool. More text.
 
 --- 
 
-I am trying to add the plugin:
+## Admonitions using "flexible-alerts" plugin:
 https://github.com/fzankl/docsify-plugin-flexible-alerts
 
 > [!NOTE]

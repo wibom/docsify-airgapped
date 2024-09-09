@@ -2,8 +2,8 @@
 
 * [Home](/)
 * [Guide](guide.md)
-* [Tool-1 info](tool1.md)
-* [Tool-2 man](tool2.md)
+* [Tool-1 alerts](tool1.md)
+* [Tool-2 links](tool2.md)
 <!-- * [emojies](emojies.md) -->
 
 

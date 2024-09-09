@@ -1,10 +1,13 @@
 #!/bin/bash
+NAME="docsify-1"
 
 docker run --rm -d -it \
   -v "$(pwd)/docs-1":/docs \
   -p 3000:3000 \
-  --name docsify-1 \
+  --name ${NAME} \
   docsify/play-1
 
-docker exec docsify-1 mkdir -p /docs/.docsify/lib/plugins
-docker exec docsify-1 cp /tmp/flexible-alerts.min.js /docs/.docsify/lib/plugins/flexible-alerts.min.js
+# make stuff bundled in /tmp/static available
+docker exec ${NAME} mkdir -p /docs/.docsify/
+docker exec ${NAME} cp -r /tmp/static /docs/.docsify
+
