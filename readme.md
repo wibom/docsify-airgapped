@@ -56,8 +56,10 @@ With a little ChatGPT help:
 > 
   
 # Todo
-[ ] add syntax-hightligh for all languages. 
+- [x] add syntax-hightligh for all languages. 
 	- See previous attempt.
 - Is there a mermaid-plugin we can add?
-
+	- Read this: https://docsify.js.org/#/markdown?id=supports-mermaid
+- can we activate the search function?
+- have we atm installed docsify twice, both globally (dockerfile) and locally (customize.sh)?
 
