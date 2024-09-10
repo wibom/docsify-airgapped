@@ -4,7 +4,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta charset="UTF-8">
-  <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/vue.css"> -->
   <link
     rel="stylesheet"
     href=".docsify/static/node_modules/docsify/themes/dark.css"
@@ -15,25 +14,74 @@
   <script>
     // https://docsify.js.org/#/configuration
     window.$docsify = {
-        name: 'sumsum-2',
-        // onlyCover: false,
+        name: 'sumsum-3',
+        onlyCover: false,
         coverpage: true,
         loadSidebar: true,
-        // subMaxLevel: 2,
-        // search: 'auto',
-        //repo: "palkan/docs-example",
-        // basePath: ".",
-        // auto2top: true,
-        homepage: "readme.md"
-        //homepage:
-        //  "https://raw.githubusercontent.com/palkan/docs-example/master/README.md"     
+        loadSidebar: '_sidebar.md',
+        autoHeader: false,
+        subMaxLevel: 2,
+        search: 'auto',
+        basePath: ".",
+        auto2top: true,
+        homepage: "readme.md",
+        // themeColor: '#3F51B5',
+
+        // mermaid:
+        // https://github.com/Leward/mermaid-docsify
+        mermaidConfig: {
+          querySelector: ".mermaid"
+        }, 
+        
+        // docsify-copy-code
+        // https://github.com/jperasmus/docsify-copy-code
+        copyCode: {
+          buttonText: 'Copy to clipboard',
+          errorText: 'Error',
+          successText: 'Copied',
+        },        
     }
-  </script>
-  <!-- <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script> -->
+  </script>  
   <script src=".docsify/static/node_modules/docsify/lib/docsify.min.js"></script>
 
-  <!-- https://github.com/fzankl/docsify-plugin-flexible-alerts -->
+  <!-- 
+    
+    _The mermaid plugin_
+
+    Getting the mermaid plugin to work was a lot of trial and error. Ultimately, what
+    worked was a specific combination calls copy/pasted and modified from these 
+    sources:
+    - https://github.com/Leward/mermaid-docsify/blob/master/example/index.html 
+    - https://codepen.io/leward/project/editor/AyegJW
+  -->  
+  <script src=".docsify/static/node_modules/mermaid/dist/mermaid.min.js"></script>
+  <script type="module">
+    // import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+    // import mermaid from ".docsify/static/node_modules/mermaid/dist/mermaid.esm.min.mjs";
+    // import mermaid from ".docsify/static/node_modules/mermaid/dist/mermaid.min.js";
+    // - Turns out that 'import' does not work with offlined version...
+    // - Using 'src' works though.
+    mermaid.initialize({      
+      startOnLoad: true,
+      theme: 'dark',             // Included themes are: dark, forest, default, and neutral
+      securityLevel: 'loose',
+      logLevel: 1
+    });
+    window.mermaid = mermaid;
+  </script>
+  <script src=".docsify/static/node_modules/docsify/lib/plugins/docsify-mermaid.js"></script>
+  
+
+  <!--
+    Plugins:
+    - https://docsify.js.org/#/plugins?id=full-text-search
+    - https://github.com/fzankl/docsify-plugin-flexible-alerts    
+    - https://github.com/jperasmus/docsify-copy-code
+  -->
+  <script src=".docsify/static/node_modules/docsify/lib/plugins/search.min.js"></script>     
   <script src=".docsify/static/node_modules/docsify/lib/plugins/flexible-alerts.min.js"></script> 
+  <script src=".docsify/static/node_modules/docsify/lib/plugins/docsify-copy-code.min.js"></script> 
+
 
   <!-- syntax highlighting -->
   <script src=".docsify/static/node_modules/prismjs/components/prism-bash.min.js"></script>   

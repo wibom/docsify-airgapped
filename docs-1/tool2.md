@@ -56,11 +56,21 @@ guru: of the highest order
 
 ```json
 # json stuff
-{json: {list: {item}}}
+{
+  "name": "John Doe",
+  "age": 30,
+  "city": "New York",
+  "isEmployed": true,
+  "skills": ["JavaScript", "React", "Node.js"]
+}
 
 ```
 
-+ And a link to [guide header lev 2-1](guide.md#heading-lev-2-1)
+
+
+
+
++ And a link to [guide header lev 2-1](tool0.md#heading-lev-2-1)
 
 + And not much more.
 

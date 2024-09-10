@@ -1,20 +1,19 @@
-# Template from:
+# Dockerfile starting point:
 # https://frameworks.readthedocs.io/en/latest/framework/api/docsifyDocker.html
 
-FROM node:alpine
-LABEL description="A demo Dockerfile for build Docsify."
+FROM node:22.8.0-alpine3.20
+LABEL description="Docsify air-gapped"
 WORKDIR /docs
 
-# RUN from erlier attempt 
-# (but that repo is removed: https://github.com/quintoandar/docker-docsify
-RUN npm install -g docsify-cli@latest && \
-    npm install -g docsify@latest
+# Global instal of Docsify-CLI; Docsify is installed locally with `customize.sh`
+RUN npm install -g docsify-cli@latest 
 
-# https://stackoverflow.com/a/62847426/7439717
+# Adding tools used by `customize.sh`
 RUN apk --update add curl && \
     apk add --no-cache wget jq
     
-# Bundle offline stuff with the image 
+# `customize.sh` bundles npm-methods and docsify-plugins with the container, to allow
+# running air-gapped
 ADD customize.sh /tmp/custom_scripts/
 RUN sh /tmp/custom_scripts/customize.sh   
 
