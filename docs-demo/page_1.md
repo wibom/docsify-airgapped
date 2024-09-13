@@ -1,7 +1,7 @@
 
 > Current document: `tool0.md`
 
-# This is the guide
+# Text, simply
 Only use level 1 header at the top of the document. This header will be ignored by the
 Docsify´s sidebar menu.
 
@@ -50,7 +50,7 @@ absently. The universe, it seemed, was far more complicated than he had ever ima
 The syntax to create links:
 
 ```markdown
-For information about json syntax-highlighting, [click-me](tool2.md#json).
+For information about json syntax-highlighting, [click-me](page_3.md#json).
 ```
 
-For information about json syntax-highlighting, [click-me](tool2.md#json).
+For information about json syntax-highlighting, [click-me](page_3.md#json).
