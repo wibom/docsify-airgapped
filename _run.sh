@@ -1,6 +1,6 @@
 #!/bin/bash
-NAME="docsify-1"
-DOCS="docs-1"  # Documents to serve (relative path on host)
+NAME="docsify-demo"
+DOCS="docs-demo"  # Documents to serve (relative path on host)
 
 # If the container has run before, there are likley a copy of the bundled assets left
 # in the container. Clean that up before we spin up a new instance of the container.
