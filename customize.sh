@@ -3,9 +3,24 @@
 #
 # Bundle online assets with the container 
 #
+# NOTE:
+# The bundled content will be made available to Docsify at runtime. This is done by using
+# `docker exec` to copy the content into Docsify's working directory in the container
+# (`/docs`). The `/docs` directory is bind-mounted to the host directory containing the
+# documents to serve.
+# 
+# Due to the nature of bind-mounts, we cannot pre-populate the `/docs` directory in the
+# container with the bundled content. If we do, the bind mount will obscure the
+# pre-existing content in `/docs`, making it appear deleted. (I learned this the hard
+# way.)
+#
+# - https://docs.docker.com/engine/storage/bind-mounts/#mount-into-a-non-empty-directory-on-the-container
+# - https://stackoverflow.com/a/61895782
+#
 
-# The directory to use for storing bundled assets:
-CONTAINER_DIR="/tmp/static"
+# - Bundele assets in a temporary directory. 
+# - Assets are to be copied to `/docs/.docsify/static` at runtime
+CONTAINER_DIR="/tmp/.docsify/static"
 mkdir -p ${CONTAINER_DIR}
 
 
@@ -61,7 +76,17 @@ function BundleEmojies {
 
         # Download the asset to /tmp
         curl ${url} --output "${emojis_tmpdir}/${filename}"
+
     done
+    
+    
+    # Edit the main Docsify module ('docsify.min.js') to use locally bundled emojis
+    # instead of the ones hosted by githubassets.    
+    # -- Remove `/tmp` and escape slashes in the rest of the path
+    PAT=$( echo "${CONTAINER_DIR}" | sed 's|^/[^/]*/||; s|/|\\/|g' )
+    sed -i \
+        "s/https:\/\/github.githubassets.com\/images\/icons\/emoji/${PAT}\/assets\/emojis/g" \
+        ${CONTAINER_DIR}/node_modules/docsify/lib/docsify.min.js
 
 }
 
