@@ -1,8 +1,12 @@
-# Intro
-This is the description of a tool. More text.
+> Current document: `tool1.md`
 
-"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+# Showcase admonitions
+There are two ways to use admonitions.
 
+
+## Using Docsify default 
+
+> Ref: https://docsify.js.org/#/helpers?id=important-content
 
 !> **Time** is money, my friend!
 
@@ -12,18 +16,55 @@ This is the description of a tool. More text.
 --- 
 
 ## Admonitions using "flexible-alerts" plugin:
-https://github.com/fzankl/docsify-plugin-flexible-alerts
+> Ref: https://github.com/fzankl/docsify-plugin-flexible-alerts
 
+
+```text
 > [!NOTE]
-> How is that going?
-> It woooooooooorks!!!! Whoho!!!!
+> "Do. Or do not. There is no try." - Yoda
+```
+> [!NOTE]
+> "Do. Or do not. There is no try." - Yoda
+
+------------------------------------------------------------------------------------------
+
+```text
+> [!ATTENTION]
+> "I find your lack of faith disturbing." - Darth Vader
+```
 
 > [!ATTENTION]
-> An alert of type 'attention' using global style 'callout'.
+> "I find your lack of faith disturbing." - Darth Vader
 
-> [!NOTE|style:flat]
-> Styling according to instructions: 
-> https://github.com/fzankl/docsify-plugin-flexible-alerts
+------------------------------------------------------------------------------------------
+
+```text
+> [!WARNING|style:flat]
+> "Don't Panic." - The Hitchhiker's Guide to the Galaxy
+```
+
+> [!WARNING|style:flat]
+> "Don't Panic." - The Hitchhiker's Guide to the Galaxy
+
+
+------------------------------------------------------------------------------------------
+
+### Nested call outs
+
+```text
+> [!TIP|label:Do nested call outs]
+> It does not appear to be possible to nest multiple "flexible allerts", however one 
+> can use Docsify default call outs within a "flexible allert":
+> 
+> !> "So long, and thanks for all the fish." - The Hitchhiker's Guide to the Galaxy
+```
+
+> [!TIP|label:Do nested call outs]
+> It does not appear to be possible to nest multiple "flexible allerts", however one 
+> can use Docsify default call outs within a "flexible allert":
+> 
+> !> "So long, and thanks for all the fish." - The Hitchhiker's Guide to the Galaxy
+>
 
 
 

@@ -1,12 +1,19 @@
 #!/bin/bash
 NAME="docsify-1"
+DOCS="docs-1"  # Documents to serve (relative path on host)
 
-docker run --rm -d -it \
-  -v "$(pwd)/docs-1":/docs \
+# If the container has run before, there are likley a copy of the bundled assets left
+# in the container. Clean that up before we spin up a new instance of the container.
+REMNANTS="$(pwd)/${DOCS}/.docsify"
+rm -rf ${REMNANTS}
+
+# Spin up container
+podman run --rm -d -it \
+  -v "$(pwd)/${DOCS}":/docs \
   -p 3000:3000 \
   --name ${NAME} \
-  docsify/play-1
+  docker-archive:docsify.v4.13.tar
 
-# Make stuff bunded in the container avaiable to Docsify by copying it to Docsify's
-# working directory `/docs`:
-docker exec ${NAME} cp -r /tmp/.docsify /docs/.docsify
+# Make bundled assets in the container avaiable to Docsify by copying it to Docsify's
+# working directory in the container `/docs`:
+podman exec ${NAME} cp -r /tmp/.docsify /docs/.docsify

@@ -1,60 +1,67 @@
-# Emojies
+> Current document: `tool3.md`
 
-I wish to get emojies working offline.
 
-How?
+# Emojis
 
-:)
+Docsify natively uses emojis from `githubassets`. We have bundled these with the container
+image.
 
-:100:
+- https://docsify.js.org/#/plugins?id=emoji
 
+Use standard github shorthand to render them:
+
+- For a full list, snoop here: https://gist.github.com/rxaviers/7360908
+
+```markdown
+:thumbsup:
+```
 :thumbsup:
 
+
+```markdown
+:grin:
+```
 :grin:
 
---------
 
-# This works because
+```markdown
+:100:
+```
+:100:
 
-We run this at container start time:
+
+Standard text short-cuts don't work though.
+
+```markdown
+:)
+```
+:)
+
+
+
+
+## Use bundled offline emoji assets
+
+We edit the containerized Docsify module 
+(`.docsify/static/node_modules/docsify/lib/docsify.min.js`) at container build time: 
+
+- before: `https://github.githubassets.com/images/icons/emoji/`
+- after:  `.docsify/static/assets/emojis`
+
+This ensures that the browser will use the locally available emoji for rendering the page;
+e.g. `http://localhost:3000/.docsify/static/assets/emojis/unicode/1f4af.png?v8.png`.
+
+
+The build-time edit happens inside `customize.sh`, like so:
 ```shell
-docker exec ${NAME} \
-  sed -i \
-  "s/https:\/\/github.githubassets.com\/images\/icons\/emoji/.docsify\/static\/assets\/emojis/g" \
-  .docsify/static/node_modules/docsify/lib/docsify.min.js
+sed -i \
+    "s/https:\/\/github.githubassets.com\/images\/icons\/emoji/${PAT}\/assets\/emojis/g" \
+    ${CONTAINER_DIR}/node_modules/docsify/lib/docsify.min.js
 ```
 
-Thereby replacing the the occurrence of `https://github.githubassets.com/images/icons/emoji/` 
-with the local asset `.docsify/static/assets/emojis`, within the file 
-`.docsify/static/node_modules/docsify/lib/docsify.min.js`.
 
-The browser will grab the asset from: 
-`http://localhost:3000/.docsify/static/assets/emojis/unicode/1f4af.png?v8.png`
+> [!NOTE|style:flat]
+> As of Docsify v4.13 the Emoji-plugin is no longer used, therefore editing the plugin
+> (`.docsify/static/node_modules/docsify/lib/plugins/emoji.min.js`) has no effect and is
+> not necessary. 
 
-
-The same address is specified in `.docsify/static/node_modules/docsify/lib/plugins/emoji.min.js`,
-but apparently that has no effect.
-
-
-
-# Legacy stuff - old container attempt locally on laptop
-
-This exists in `/lib/docsify.js` (and therefore also in `min.js`: https://www.quora.com/What-is-difference-between-JS-and-Min-JS):
-
-`https://github.githubassets.com/images/icons/emoji/`
-
-What happens if I change it in the "min.js"...?
-
-Try changing it to `https://github.foo.githubassets.com/images/icons/emoji/`.
-
-And now the nice little emojies on this page are gone..
-
-And when I change it back - I get the emojies back :grin:
-
-> [!ATTENTION]
-> Can this base-url be changed to some local resource????
-
-
----
-
-Made changes to `docsify.min.js`. 

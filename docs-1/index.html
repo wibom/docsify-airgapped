@@ -8,6 +8,7 @@
     rel="stylesheet"
     href=".docsify/static/node_modules/docsify/themes/dark.css"
   />
+
 </head>
 <body>
   <div id="app"></div>
@@ -18,9 +19,8 @@
         onlyCover: false,
         coverpage: true,
         loadSidebar: true,
-        loadSidebar: '_sidebar.md',
         autoHeader: false,
-        subMaxLevel: 2,
+        subMaxLevel: 3,
         search: 'auto',
         basePath: ".",
         auto2top: true,
@@ -39,7 +39,8 @@
           buttonText: 'Copy to clipboard',
           errorText: 'Error',
           successText: 'Copied',
-        },        
+        },
+      
     }
   </script>  
   <script src=".docsify/static/node_modules/docsify/lib/docsify.min.js"></script>
@@ -60,7 +61,7 @@
     // import mermaid from ".docsify/static/node_modules/mermaid/dist/mermaid.esm.min.mjs";
     // import mermaid from ".docsify/static/node_modules/mermaid/dist/mermaid.min.js";
     // - Turns out that 'import' does not work with offlined version...
-    // - Using 'src' works though.
+    // - Using 'src' works though (see above).
     mermaid.initialize({      
       startOnLoad: true,
       theme: 'dark',             // Included themes are: dark, forest, default, and neutral
@@ -77,6 +78,7 @@
     - https://docsify.js.org/#/plugins?id=full-text-search
     - https://github.com/fzankl/docsify-plugin-flexible-alerts    
     - https://github.com/jperasmus/docsify-copy-code
+    - https://github.com/justintien/docsify-plugin-toc
   -->
   <script src=".docsify/static/node_modules/docsify/lib/plugins/search.min.js"></script>     
   <script src=".docsify/static/node_modules/docsify/lib/plugins/flexible-alerts.min.js"></script> 

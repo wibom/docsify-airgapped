@@ -1,7 +1,28 @@
-# Tool 2
-Here is where I write text about the second tool.
+> Current document: `tool2.md`
 
-It contains the same code-snippit as the landing page [readme.md](readme.md).
+# Showcase syntax highlighting
+
+Syntax highlighting is powered by Prism.
+
+- https://docsify.js.org/#/language-highlight
+
+
+> [!NOTE|style:flat]
+> Language support is controlled in the `index.html` page. Simply add languages as 
+> necessary.
+>
+> ```bash
+>   <!-- syntax highlighting -->
+>  <script src=".docsify/static/node_modules/prismjs/components/prism-bash.min.js"></script>   
+>  <script src=".docsify/static/node_modules/prismjs/components/prism-r.min.js"></script> 
+>  <script src=".docsify/static/node_modules/prismjs/components/prism-python.min.js"></script>
+>  <script src=".docsify/static/node_modules/prismjs/components/prism-docker.min.js"></script>
+>  <script src=".docsify/static/node_modules/prismjs/components/prism-markdown.min.js"></script>
+>  <script src=".docsify/static/node_modules/prismjs/components/prism-yaml.min.js"></script>
+>  <script src=".docsify/static/node_modules/prismjs/components/prism-json.min.js"></script>
+> ```
+
+## Bash
 
 ```bash
 # bash syntax highlighting
@@ -13,12 +34,15 @@ for i in ${ARR[@]}; do
 done
 ```
 
+## Html
+
 ```html
 <!-- html -->
 
 <bold> classics </bold>
 ```
 
+## R
 ```r
 # This is R-code
 helloworld <- dplyr::mutate(ds, foo)
@@ -26,6 +50,8 @@ print("hello world")
 ds %>% mutate()
 ```
 
+
+## Docker
 ```docker
 RUN some stuff
 CMD some other stuff
@@ -36,6 +62,7 @@ ENTRYPOINT ["some", "string"]
 
 ```
 
+## Markdown
 ```markdown
 
 # So, highlight this then
@@ -46,6 +73,7 @@ ENTRYPOINT ["some", "string"]
 `we will not yield`. **Right**?
 ```
 
+## Yaml
 ```yaml
 # yaml stuff
 some:
@@ -54,6 +82,7 @@ guru: of the highest order
 
 ```
 
+## Json
 ```json
 # json stuff
 {
@@ -65,12 +94,4 @@ guru: of the highest order
 }
 
 ```
-
-
-
-
-
-+ And a link to [guide header lev 2-1](tool0.md#heading-lev-2-1)
-
-+ And not much more.
 
