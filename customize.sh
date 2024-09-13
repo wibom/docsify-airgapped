@@ -76,7 +76,7 @@ function BundleEmojies {
 
         # Download the asset to /tmp
         curl ${url} --output "${emojis_tmpdir}/${filename}"
-        break
+
     done
     
     
