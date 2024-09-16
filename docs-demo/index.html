@@ -31,6 +31,47 @@
     rel="stylesheet" 
     href=".docsify/static/assets/fontawesome-free/css/solid.min.css"
   />
+
+  <!-- Custom Styles: docsify-themeable (https://jhildenbiddle.github.io/docsify-themeable) -->
+  <!-- default: https://github.com/jhildenbiddle/docsify-themeable/tree/master/src/scss/themes/defaults -->
+  <style>
+    :root {
+      /* Color
+      ------------------------------------------------------------------------- */
+      /* Monochrome */      
+      --mono-hue:        208;
+      --mono-saturation: 14%;
+      
+      /* Monochrome shades (darker) and tints (lighter) */
+      --mono-shade3: hsl(var(--mono-hue), var(--mono-saturation), 13%);
+      --mono-shade2: hsl(var(--mono-hue), var(--mono-saturation), 15%);
+      --mono-shade1: hsl(var(--mono-hue), var(--mono-saturation), 17%);
+      --mono-base  : hsl(var(--mono-hue), var(--mono-saturation), 19%);
+      --mono-tint1 : hsl(var(--mono-hue), var(--mono-saturation), 25%);
+      --mono-tint2 : hsl(var(--mono-hue), var(--mono-saturation), 35%);
+      --mono-tint3 : hsl(var(--mono-hue), var(--mono-saturation), 53%);
+
+      /* Theme */
+      --theme-hue       : 176;
+      --theme-saturation: 40%;
+      --theme-lightness : 45%;
+      --theme-color     : hsl(var(--theme-hue), var(--theme-saturation), var(--theme-lightness));      
+      
+
+      /* Headings */
+      --heading-color                     : var(--mono-tint3);
+      --heading-margin                    : 3.5rem 0 0; 
+      --heading-h2-margin                 : 6.5rem 0 0;
+
+      /* h5 and h6 get too small by default */
+      --heading-h5-font-size              : var(--font-size-m);
+      --heading-h5-font-weight            : 300;
+      --heading-h6-font-size              : var(--font-size-m);
+      --heading-h6-font-weight            : 100; 
+  
+
+    }
+  </style>
 </head>
 <body>
   <div id="app"></div>
@@ -58,7 +99,7 @@
         // docsify-copy-code
         // https://github.com/jperasmus/docsify-copy-code
         copyCode: {
-          buttonText: 'Copy to clipboard',
+          buttonText: 'Copy',
           errorText: 'Error',
           successText: 'Copied',
         },
@@ -75,7 +116,7 @@
           quote: {
             label: 'Quote',
             icon: 'fas fa-quote-left',  // Font Awesome
-            className: 'quote'          // not supported = renders w/o color, which works!
+            className: 'quote'          // not supported = renders w/o color, which kinda works!
           }      
         },
       
@@ -86,8 +127,7 @@
   <!-- Docsify Themeable https://jhildenbiddle.github.io/docsify-themeable/#/quick-start -->
   <script src=".docsify/static/node_modules/docsify-themeable/dist/js/docsify-themeable.min.js"></script>  
 
-  <!-- 
-    
+  <!--     
     _The mermaid plugin_
 
     Getting the mermaid plugin to work was a lot of trial and error. Ultimately, what

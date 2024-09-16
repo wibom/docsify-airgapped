@@ -1,4 +1,4 @@
-> Current document: `tool2.md`
+> Current document: `page_3.md`
 
 # Showcase syntax highlighting
 

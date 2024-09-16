@@ -1,4 +1,4 @@
-> Current document: `tool1.md`
+> Current document: `page_2.md`
 
 # Showcase admonitions
 There are two ways to use admonitions.
@@ -13,7 +13,7 @@ There are two ways to use admonitions.
 
 ?> **WARNING** text to stand out.x
 
---- 
+
 
 ## Admonitions using "flexible-alerts" plugin:
 > Ref: https://github.com/fzankl/docsify-plugin-flexible-alerts
