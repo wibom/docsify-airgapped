@@ -36,6 +36,7 @@ function BundleModules {
     npm init -y
     npm install docsify@4 --save
     npm install mermaid@10 --save  # for some reason we still end up with v11 ?
+    npm install docsify-themeable@0 --save
 
 }
 function BundlePlugins {
@@ -76,7 +77,7 @@ function BundleEmojies {
 
         # Download the asset to /tmp
         curl ${url} --output "${emojis_tmpdir}/${filename}"
-        break
+
     done
     
     
