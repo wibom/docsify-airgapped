@@ -76,7 +76,7 @@ function BundleEmojies {
 
         # Download the asset to /tmp
         curl ${url} --output "${emojis_tmpdir}/${filename}"
-
+        break
     done
     
     
@@ -89,7 +89,27 @@ function BundleEmojies {
         ${CONTAINER_DIR}/node_modules/docsify/lib/docsify.min.js
 
 }
+function BundleAssets {
+    # Download font awesome (icons for custum flexible alerts)
+
+    AF_VER='6.5.2'
+    AWESOME="fontawesome-free-${AF_VER}-web"    
+    AWESOME_PATH=${CONTAINER_DIR}/assets/fontawesome-free
+    AWESOME_TMPDIR='/tmp/awesome'
+    mkdir -p ${AWESOME_PATH}
+    mkdir -p ${AWESOME_TMPDIR}
+    wget --directory-prefix=/tmp/awesome  \
+        https://use.fontawesome.com/releases/v${AF_VER}/${AWESOME}.zip
+    unzip ${AWESOME_TMPDIR}/${AWESOME}.zip -d ${AWESOME_TMPDIR}
+    mv ${AWESOME_TMPDIR}/${AWESOME}/* ${AWESOME_PATH}
+
+    # clean up
+    rm -rf ${AWESOME_TMPDIR}
+
+
+}
 
 BundleModules
 BundlePlugins
 BundleEmojies
+BundleAssets

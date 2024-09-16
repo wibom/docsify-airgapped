@@ -68,3 +68,32 @@ There are two ways to use admonitions.
 
 
 
+### Custom call outs
+
+These are custom alerts, configured in `index.html` with icons from Font Awesome (bundled
+with container image, and linked in `index.html`).
+
+```text
+> [!QUOTE]
+> An alert of type 'comment' using style 'callout' with default settings.
+```
+> [!QUOTE]
+> An alert of type 'comment' using style 'callout' with default settings.
+
+In `index.html` we apply this mapping: `className: 'quote'`. This is not supported. That
+is why it renders without colors, which kinda works as its own CSS-class.
+
+------------------------------------------------------------------------------
+```text
+> [!COMMENT]
+> An alert of type 'comment' using style 'callout' with default settings.
+```
+> [!COMMENT]
+> An alert of type 'comment' using style 'callout' with default settings.
+
+In `index.html` we apply this mapping: `className: 'note'`. Thus `COMMENT` will inherit
+the CSS-class from `NOTE` and have the same look and feel, although a different icon.
+
+See original java script:
+https://github.com/fzankl/docsify-plugin-flexible-alerts/blob/main/src/index.js
+
