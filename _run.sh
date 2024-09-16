@@ -8,7 +8,7 @@ REMNANTS="$(pwd)/${DOCS}/.docsify"
 rm -rf ${REMNANTS}
 
 # Spin up container
-podman run --rm -d -it \
+podman run -d \
   -v "$(pwd)/${DOCS}":/docs \
   -p 3000:3000 \
   --name ${NAME} \
