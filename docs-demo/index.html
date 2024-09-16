@@ -15,9 +15,17 @@
   -->
   
   <!-- Theme from docsify-themeable:  https://jhildenbiddle.github.io/docsify-themeable/#/-->
-  <link rel="stylesheet" media="(prefers-color-scheme: dark)" href=".docsify/static/node_modules/docsify-themeable/dist/css/theme-simple-dark.css">
-  <link rel="stylesheet" media="(prefers-color-scheme: light)" href=".docsify/static/node_modules/docsify-themeable/dist/css/theme-simple.css">  
-  
+  <link 
+    rel="stylesheet" 
+    media="(prefers-color-scheme: dark)" 
+    href=".docsify/static/node_modules/docsify-themeable/dist/css/theme-simple-dark.css"
+  >
+  <link 
+    rel="stylesheet" 
+    media="(prefers-color-scheme: light)" 
+    href=".docsify/static/node_modules/docsify-themeable/dist/css/theme-simple.css"
+  >  
+
   <!-- font awesome -->
   <link 
     rel="stylesheet" 
@@ -52,7 +60,7 @@
       --mono-tint3 : hsl(var(--mono-hue), var(--mono-saturation), 53%);
 
       /* Theme */
-      --theme-hue       : 176;
+      --theme-hue       : 51; /*hsl-value*/
       --theme-saturation: 40%;
       --theme-lightness : 45%;
       --theme-color     : hsl(var(--theme-hue), var(--theme-saturation), var(--theme-lightness));      
@@ -116,8 +124,20 @@
           quote: {
             label: 'Quote',
             icon: 'fas fa-quote-left',  // Font Awesome
-            className: 'quote'          // not supported = renders w/o color, which kinda works!
-          }      
+            className: 'note'           // not supported = renders w/o color, which kinda works!
+          },
+          abstract: {
+            label: 'TL;DR',
+            icon: 'fas fa-file-lines',  // Font Awesome
+            className: 'note'          // not supported = renders w/o color, which kinda works!
+          },          
+          bug: {
+            label: 'Bug!',
+            icon: 'fas fa-bug',  // Font Awesome
+            className: 'attention'          // not supported = renders w/o color, which kinda works!
+          },
+           
+
         },
       
     }
