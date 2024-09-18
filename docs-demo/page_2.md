@@ -5,18 +5,27 @@ There are two ways to use admonitions.
 
 
 ## Docsify default 
+- Ref: https://docsify.js.org/#/helpers?id=important-content
 
-> Ref: https://docsify.js.org/#/helpers?id=important-content
-
+------------------------------------------------------------------------------------------
+ 
+```text
+!> **Time** is money, my friend!
+```
 !> **Time** is money, my friend!
 
+------------------------------------------------------------------------------------------
 
-?> **WARNING** text to stand out.x
+```text
+?> **WARNING** text to stand out.
+```
+?> **WARNING** text to stand out.
+
 
 
 
 ## "flexible-alerts" plugin:
-> Ref: https://github.com/fzankl/docsify-plugin-flexible-alerts
+- Ref: https://github.com/fzankl/docsify-plugin-flexible-alerts
 
 There are four built in classes:
 
@@ -59,7 +68,7 @@ There are four built in classes:
 > "I'd far rather be happy than right any day." - Slartibartfast
 
 #### Tweaking
-Each of the classes can be customized further as documented here:
+Each of the  built in classes can be customized further as documented here:
 https://github.com/fzankl/docsify-plugin-flexible-alerts?tab=readme-ov-file#customizations
 
 - Custom label:  
@@ -111,13 +120,14 @@ https://github.com/fzankl/docsify-plugin-flexible-alerts?tab=readme-ov-file#cust
 > they're gone." - Jack Handey
 
 
-### Custom call outs
+### Customized admonitions
 
-These are custom alerts, configured in `index.html` with icons from Font Awesome (bundled
-with container image, and linked in `index.html`).
+These are custom admonitions, configured in `index.html` with icons from Font Awesome
+(bundled with container image, and linked in `index.html`).
 
-> See original java script:
-> https://github.com/fzankl/docsify-plugin-flexible-alerts/blob/main/src/index.js
+- See original java script:
+  https://github.com/fzankl/docsify-plugin-flexible-alerts/blob/main/src/index.js
+
 
 - 
 ```text
