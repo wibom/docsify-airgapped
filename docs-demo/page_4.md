@@ -42,26 +42,36 @@ Standard text short-cuts don't work though.
 
 ## Use bundled offline emoji assets
 
-We edit the containerized Docsify module 
-(`.docsify/static/node_modules/docsify/lib/docsify.min.js`) at container build time: 
+At build time, `customize.sh` patches the Docsify core module
+(`.docsify/static/node_modules/docsify/lib/docsify.min.js`) so that emoji image URLs
+point to the locally bundled assets instead of the GitHub CDN:
 
 - before: `https://github.githubassets.com/images/icons/emoji/`
-- after:  `.docsify/static/assets/emojis`
+- after:  `.docsify/static/assets/emojis/`
 
-This ensures that the browser will use the locally available emoji for rendering the page;
-e.g. `http://localhost:3000/.docsify/static/assets/emojis/unicode/1f4af.png?v8.png`.
+This ensures that the browser uses locally available emojis for rendering; e.g.
+`http://localhost:3000/.docsify/static/assets/emojis/unicode/1f4af.png?v8.png`.
 
-
-The build-time edit happens inside `customize.sh`, like so:
+The relevant section in `customize.sh`:
 ```shell
+PAT=$(echo "${CONTAINER_DIR}" | sed 's|^/[^/]*/||; s|/|\\/|g')
 sed -i \
     "s/https:\/\/github.githubassets.com\/images\/icons\/emoji/${PAT}\/assets\/emojis/g" \
-    ${CONTAINER_DIR}/node_modules/docsify/lib/docsify.min.js
+    "${CONTAINER_DIR}/node_modules/docsify/lib/docsify.min.js"
 ```
 
+After patching, a verification step ensures no references to the CDN remain:
+```shell
+if grep -q "github.githubassets.com/images/icons/emoji" \
+    "${CONTAINER_DIR}/node_modules/docsify/lib/docsify.min.js"; then
+    echo "ERROR: Emoji URL patch failed"
+    exit 1
+fi
+```
 
 > [!NOTE|style:flat]
-> As of Docsify v4.13 the Emoji-plugin is no longer used, therefore editing the plugin
-> (`.docsify/static/node_modules/docsify/lib/plugins/emoji.min.js`) has no effect and is
-> not necessary. 
+> As of Docsify v4.13, emojis are resolved directly in the core module
+> (`docsify.min.js`). The separate emoji plugin
+> (`.docsify/static/node_modules/docsify/lib/plugins/emoji.min.js`) is no longer used and
+> does not need to be patched.
 

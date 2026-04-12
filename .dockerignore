@@ -1,0 +1,10 @@
+# Build context exclusions
+docs-demo/
+*.tar
+*.log
+.git/
+.gitignore
+dev_notes.md
+docsify.v4.13.cves.md
+readme.md
+_run.sh

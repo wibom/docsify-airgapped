@@ -111,11 +111,11 @@ https://github.com/fzankl/docsify-plugin-flexible-alerts?tab=readme-ov-file#cust
 
 - Custom icon
 ```text
-> [!TIP|icon:fas fa-skull]
+> [!TIP|icon:fa-solid fa-skull]
 > "If you ever drop your keys into a river of molten lava, let 'em go, because, man, 
 > they're gone." - Jack Handey
 ```
-> [!TIP|icon:fas fa-skull]
+> [!TIP|icon:fa-solid fa-skull]
 > "If you ever drop your keys into a river of molten lava, let 'em go, because, man, 
 > they're gone." - Jack Handey
 
@@ -123,7 +123,9 @@ https://github.com/fzankl/docsify-plugin-flexible-alerts?tab=readme-ov-file#cust
 ### Customized admonitions
 
 These are custom admonitions, configured in `index.html` with icons from Font Awesome
-(bundled with container image, and linked in `index.html`).
+(bundled with container image, and linked in `index.html`). Both FA7 syntax
+(`fa-solid fa-skull`) and legacy FA5 syntax (`fas fa-skull`) are supported via
+backward-compatibility shims.
 
 - See original java script:
   https://github.com/fzankl/docsify-plugin-flexible-alerts/blob/main/src/index.js

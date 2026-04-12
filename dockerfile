@@ -1,25 +1,35 @@
-# Dockerfile starting point:
-# https://frameworks.readthedocs.io/en/latest/framework/api/docsifyDocker.html
+# =============================================================================
+# Multi-stage build for air-gapped Docsify container
+# =============================================================================
 
-FROM node:22.8.0-alpine3.20
+# ---------------------------------------------------------------------------
+# Stage 1: builder — download and bundle all assets
+# ---------------------------------------------------------------------------
+FROM node:24-alpine AS builder
+
+RUN apk add --no-cache curl wget jq
+
+COPY customize.sh /tmp/custom_scripts/
+RUN sh /tmp/custom_scripts/customize.sh
+
+# ---------------------------------------------------------------------------
+# Stage 2: runtime — minimal image with docsify-cli and bundled assets
+# ---------------------------------------------------------------------------
+FROM node:24-alpine
+
 LABEL description="Docsify air-gapped"
 WORKDIR /docs
 
-# Install tini
 RUN apk add --no-cache tini
+RUN npm install -g docsify-cli@4.4.4
 
-# Global instal of Docsify-CLI; Docsify is installed locally with `customize.sh`
-RUN npm install -g docsify-cli@latest 
+# Copy bundled assets from builder
+COPY --from=builder /tmp/.docsify /tmp/.docsify
 
-# Adding tools used by `customize.sh`
-RUN apk --update add curl && \
-    apk add --no-cache wget jq
-    
-# `customize.sh` bundles npm-methods and docsify-plugins with the container
-# enables running air-gapped
-ADD customize.sh /tmp/custom_scripts/
-RUN sh /tmp/custom_scripts/customize.sh   
+# Entrypoint copies assets into /docs at startup then serves
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
 
 EXPOSE 3000/tcp
 ENTRYPOINT ["/sbin/tini", "--"]
-CMD [ "docsify", "serve", "." ]
+CMD ["entrypoint.sh"]

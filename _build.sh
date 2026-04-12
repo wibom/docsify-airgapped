@@ -1,7 +1,7 @@
 #!/bin/bash
 
 IMAGENAME_LABEL=docsify/air-gapped
-IMAGEFILE="docsify.v4.13.tar"
+IMAGEFILE="docsify.v4.13-r2.tar"
 
 # Set up log
 LOG="podman_build_$(date +%Y%m%d_%H%M%S).log"
